@@ -1,5 +1,6 @@
 # Claude Code files
 .claude
+TASK.md
 
 # Node.js dependencies
 node_modules/
