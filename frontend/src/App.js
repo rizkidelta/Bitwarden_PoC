@@ -180,10 +180,11 @@ function App() {
       setTimeout(() => addLog('🔑 Generating strong password...'), 200);
       setTimeout(() => addLog('💾 Saving to Bitwarden...'), 800);
       setTimeout(() => addLog('🔄 Updating existing Bitwarden item...'), 1500);
-      setTimeout(() => addLog('📡 Running Ansible playbook to update password on target machines...'), 2000);
+      setTimeout(() => addLog('🔄 Syncing vault to get latest version...'), 2200);
+      setTimeout(() => addLog('📡 Running Ansible playbook to update password on target machine...'), 3000);
       
       hosts.forEach((host, index) => {
-        setTimeout(() => addLog(`🖥️  Updating password on ${host.name} (${host.ip})...`), 2500 + (index * 1000));
+        setTimeout(() => addLog(`🖥️  Updating password on ${host.name} (${host.ip})...`), 3500 + (index * 1000));
       });
       
       const response = await axios.post(`${API_BASE}/rotate-password`, {
