@@ -129,6 +129,11 @@ app.post('/api/rotate-password', async (req, res) => {
     
     if (existingItemId) {
       console.log('🔄 Updating existing Bitwarden item...');
+      
+      // Sync vault to ensure we have the latest version
+      console.log('🔄 Syncing vault to get latest version...');
+      await executeCommand(`bw sync --session "${BW_SESSION}"`);
+      
       // Get existing item, update it, and save
       const getResult = await executeCommand(`bw get item "${existingItemId}" --session "${BW_SESSION}"`);
       const item = JSON.parse(getResult.stdout);
